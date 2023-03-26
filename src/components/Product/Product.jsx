@@ -5,6 +5,7 @@ import img404 from "../../assets/images/404.jpg";
 
 const Product = (props) => {
   const { name, price, seller, ratings, img } = props.productDetails;
+  const handelCart = props.handelCart;
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="p-2">
@@ -19,7 +20,10 @@ const Product = (props) => {
           <p className="text-sm font-medium mb-3">Rating : {ratings} Stars</p>
           <div className="card-actions"></div>
         </div>
-        <button className="btn btn-accent">
+        <button
+          onClick={() => handelCart(props.productDetails)}
+          className="btn btn-accent"
+        >
           Add To Cart <FontAwesomeIcon icon={faCartPlus} />
         </button>
       </div>
