@@ -4,13 +4,13 @@ import logo from "../../assets/images/Logo.svg";
 const Header = () => {
   return (
     <header className="bg-primary py-5">
-      <nav className="w-4/5 mx-auto flex row items-center justify-between">
+      <nav className="px-24 flex flex-row items-center justify-between">
         <div id="logo">
           <a href="/">
             <img src={logo} alt="" />
           </a>
         </div>
-        <ul className="flex row items-center gap-8 text-white text-xl font-medium">
+        <ul className="flex flex-row items-center gap-8 text-white text-xl font-medium">
           <li>
             <a href="/order">Order</a>
           </li>
