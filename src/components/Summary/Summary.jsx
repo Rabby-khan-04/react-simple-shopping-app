@@ -19,9 +19,9 @@ const Summary = (props) => {
       <p className="text-xl font-medium mb-6">
         Total Shipping Charge: ${shipping}
       </p>
-      <p className="text-xl font-medium mb-6">Tax: ${tax}</p>
+      <p className="text-xl font-medium mb-6">Tax: ${tax.toFixed(2)}</p>
       <p className="text-xl font-medium">
-        Grand Total: ${totalPrice + shipping + tax}
+        Grand Total: ${(totalPrice + shipping + tax).toFixed(2)}
       </p>
       <div className="mt-14">
         <button className="btn bg-neutral font-bold border-none w-full mb-4 hover:bg-secondary">
