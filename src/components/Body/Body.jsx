@@ -1,18 +1,24 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-  faTrashCan,
-} from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import Product from "../Product/Product";
+import Summary from "../Summary/Summary";
 
 const Body = () => {
   const [products, setProducts] = useState([]);
 
   const [cart, setCart] = useState([]);
   const handelCart = (product) => {
-    const newCart = [...cart, product];
-    setCart(newCart);
+    let newCart;
+
+    const storedCart = localStorage.getItem("shopping-cart");
+    if (storedCart) {
+      newCart = JSON.parse(storedCart);
+    } else {
+      newCart = [];
+    }
+    newCart.push(product);
+
+    localStorage.setItem("shopping-cart", JSON.stringify(newCart));
+    setCart([...newCart]);
   };
 
   useEffect(() => {
@@ -33,36 +39,7 @@ const Body = () => {
           ))}
         </div>
         <div className="bg-accent relative p-6">
-          <div className="w-full z-50">
-            <h2 className="text-center text-2xl font-semibold mb-14">
-              Order Summary
-            </h2>
-            <p className="text-xl font-medium mb-6">
-              Selected Items: {cart.length}
-            </p>
-            <p className="text-xl font-medium mb-6">Total Price: $1140</p>
-            <p className="text-xl font-medium mb-6">
-              Total Shipping Charge: $5
-            </p>
-            <p className="text-xl font-medium mb-6">
-              Total Shipping Charge: $5
-            </p>
-            <p className="text-xl font-medium">Grand Total: $1559</p>
-            <div className="mt-14">
-              <button className="btn bg-neutral font-bold border-none w-full mb-4 hover:bg-secondary">
-                Clear Cart
-                <span className="inline-block ml-2">
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </span>
-              </button>
-              <button className="btn bg-secondary border-none font-bold w-full">
-                Review Order
-                <span className="inline-block ml-2">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </span>
-              </button>
-            </div>
-          </div>
+          <Summary cart={cart}></Summary>
         </div>
       </div>
     </section>
