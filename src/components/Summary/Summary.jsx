@@ -6,22 +6,28 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const Summary = (props) => {
   const { cart } = props;
-  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
-  const tax = (totalPrice * 7) / 100;
-  const shipping = cart.reduce((acc, curr) => acc + curr.shipping, 0);
+  let quantity = 0;
+  let price = 0;
+  let shipping = 0;
+  for (const product of cart) {
+    quantity += product.quantity;
+    price = product.price * quantity;
+    shipping += product.shipping;
+  }
+  const tax = (price * 7) / 100;
   return (
     <div className="sticky top-4 w-full z-50">
       <h2 className="text-center text-2xl font-semibold mb-14">
         Order Summary
       </h2>
-      <p className="text-xl font-medium mb-6">Selected Items: {cart.length}</p>
-      <p className="text-xl font-medium mb-6">Total Price: ${totalPrice}</p>
+      <p className="text-xl font-medium mb-6">Selected Items: {quantity}</p>
+      <p className="text-xl font-medium mb-6">Total Price: ${price}</p>
       <p className="text-xl font-medium mb-6">
         Total Shipping Charge: ${shipping}
       </p>
       <p className="text-xl font-medium mb-6">Tax: ${tax.toFixed(2)}</p>
       <p className="text-xl font-medium">
-        Grand Total: ${(totalPrice + shipping + tax).toFixed(2)}
+        Grand Total: ${(price + shipping + tax).toFixed(2)}
       </p>
       <div className="mt-14">
         <button className="btn bg-neutral font-bold border-none w-full mb-4 hover:bg-secondary">
