@@ -11,7 +11,7 @@ const Summary = (props) => {
   let shipping = 0;
   for (const product of cart) {
     quantity += product.quantity;
-    price = product.price * quantity;
+    price = price + product.price * product.quantity;
     shipping += product.shipping;
   }
   const tax = (price * 7) / 100;
