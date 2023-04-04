@@ -1,6 +1,10 @@
 import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
-import { addToDB, getItemFromDB } from "../../../utilities/fakedb";
+import {
+  addToDB,
+  deleteShoppingCart,
+  getItemFromDB,
+} from "../../../utilities/fakedb";
 import Product from "../Product/Product";
 import Summary from "../Summary/Summary";
 
@@ -41,6 +45,12 @@ const Shop = () => {
     setCart(newCart);
     addToDB(product.id);
   };
+
+  const clearCartItem = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
+
   return (
     <section>
       <div className=" grid grid-cols-4">
@@ -54,7 +64,7 @@ const Shop = () => {
           ))}
         </div>
         <div className="bg-accent relative">
-          <Summary cart={cart}></Summary>
+          <Summary clearCartItem={clearCartItem} cart={cart}></Summary>
         </div>
       </div>
     </section>

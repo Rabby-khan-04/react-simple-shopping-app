@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import Summary from "../Summary/Summary";
 import { useLoaderData } from "react-router-dom";
 import CartItem from "../CartItem/CartItem";
-import { removeFromDB } from "../../../utilities/fakedb";
+import { deleteShoppingCart, removeFromDB } from "../../../utilities/fakedb";
 
 const Orders = () => {
   const savedCart = useLoaderData();
+  const [reviewBtn, setReviewBtn] = useState(true);
   const [cart, setCart] = useState(savedCart);
 
   const deleteCartItem = (id) => {
     removeFromDB(id);
     const restItem = cart.filter((product) => product.id !== id);
     setCart(restItem);
+  };
+
+  const clearCartItem = () => {
+    setCart([]);
+    deleteShoppingCart();
   };
 
   return (
@@ -27,7 +33,11 @@ const Orders = () => {
           ))}
         </div>
         <div className="col-span-2 relative p-6 rounded-lg">
-          <Summary cart={cart} />
+          <Summary
+            reviewBtn={reviewBtn}
+            clearCartItem={clearCartItem}
+            cart={cart}
+          />
         </div>
       </div>
     </section>

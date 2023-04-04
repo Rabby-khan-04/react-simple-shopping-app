@@ -4,8 +4,14 @@ import {
   faMagnifyingGlass,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 const Summary = (props) => {
-  const { cart } = props;
+  const navigate = useNavigate();
+  const goToOrderReviewPage = () => {
+    navigate("/orders/");
+  };
+
+  const { cart, reviewBtn, clearCartItem } = props;
   let quantity = 0;
   let price = 0;
   let shipping = 0;
@@ -30,13 +36,21 @@ const Summary = (props) => {
         Grand Total: ${(price + shipping + tax).toFixed(2)}
       </p>
       <div className="mt-14">
-        <button className="btn bg-neutral font-bold border-none w-full mb-4 hover:bg-secondary">
+        <button
+          onClick={clearCartItem}
+          className="btn bg-neutral font-bold border-none w-full mb-4 hover:bg-secondary"
+        >
           Clear Cart
           <span className="inline-block ml-2">
             <FontAwesomeIcon icon={faTrashCan} />
           </span>
         </button>
-        <button className="btn bg-secondary border-none font-bold w-full">
+        <button
+          onClick={goToOrderReviewPage}
+          className={`btn bg-secondary border-none font-bold w-full ${
+            reviewBtn ? "hidden" : ""
+          }`}
+        >
           Review Order
           <span className="inline-block ml-2">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
