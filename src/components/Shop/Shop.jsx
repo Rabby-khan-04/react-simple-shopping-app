@@ -53,7 +53,7 @@ const Shop = () => {
             />
           ))}
         </div>
-        <div className="bg-accent relative p-6">
+        <div className="bg-accent relative">
           <Summary cart={cart}></Summary>
         </div>
       </div>

@@ -16,7 +16,7 @@ const Summary = (props) => {
   }
   const tax = (price * 7) / 100;
   return (
-    <div className="sticky top-4 w-full z-50">
+    <div className="sticky top-4 w-full z-50 bg-accent p-6 rounded-lg">
       <h2 className="text-center text-2xl font-semibold mb-14">
         Order Summary
       </h2>
