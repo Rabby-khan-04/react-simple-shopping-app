@@ -4,14 +4,7 @@ import {
   faMagnifyingGlass,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-const Summary = (props) => {
-  const navigate = useNavigate();
-  const goToOrderReviewPage = () => {
-    navigate("/orders/");
-  };
-
-  const { cart, reviewBtn, clearCartItem } = props;
+const Summary = ({ cart, clearCartItem, children }) => {
   let quantity = 0;
   let price = 0;
   let shipping = 0;
@@ -45,17 +38,7 @@ const Summary = (props) => {
             <FontAwesomeIcon icon={faTrashCan} />
           </span>
         </button>
-        <button
-          onClick={goToOrderReviewPage}
-          className={`btn bg-secondary border-none font-bold w-full ${
-            reviewBtn ? "hidden" : ""
-          }`}
-        >
-          Review Order
-          <span className="inline-block ml-2">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </span>
-        </button>
+        {children}
       </div>
     </div>
   );

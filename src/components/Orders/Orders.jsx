@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Summary from "../Summary/Summary";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import CartItem from "../CartItem/CartItem";
 import { deleteShoppingCart, removeFromDB } from "../../../utilities/fakedb";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCreditCard,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Orders = () => {
   const savedCart = useLoaderData();
-  const [reviewBtn, setReviewBtn] = useState(true);
   const [cart, setCart] = useState(savedCart);
 
   const deleteCartItem = (id) => {
@@ -18,6 +22,11 @@ const Orders = () => {
   const clearCartItem = () => {
     setCart([]);
     deleteShoppingCart();
+  };
+
+  const navigate = useNavigate();
+  const goToOrderCheckoutPage = () => {
+    navigate("/checkout");
   };
 
   return (
@@ -33,11 +42,17 @@ const Orders = () => {
           ))}
         </div>
         <div className="col-span-2 relative p-6 rounded-lg">
-          <Summary
-            reviewBtn={reviewBtn}
-            clearCartItem={clearCartItem}
-            cart={cart}
-          />
+          <Summary clearCartItem={clearCartItem} cart={cart}>
+            <button
+              onClick={goToOrderCheckoutPage}
+              className="btn bg-secondary border-none font-bold w-full"
+            >
+              Review Order
+              <span className="inline-block ml-2">
+                <FontAwesomeIcon icon={faCreditCard} />
+              </span>
+            </button>
+          </Summary>
         </div>
       </div>
     </section>

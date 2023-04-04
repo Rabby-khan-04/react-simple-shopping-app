@@ -1,4 +1,7 @@
-import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faSquareArrowUpRight,
+} from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import {
   addToDB,
@@ -7,6 +10,8 @@ import {
 } from "../../../utilities/fakedb";
 import Product from "../Product/Product";
 import Summary from "../Summary/Summary";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -51,6 +56,11 @@ const Shop = () => {
     deleteShoppingCart();
   };
 
+  const navigate = useNavigate();
+  const goToOrderReviewPage = () => {
+    navigate("/orders");
+  };
+
   return (
     <section>
       <div className=" grid grid-cols-4">
@@ -64,7 +74,17 @@ const Shop = () => {
           ))}
         </div>
         <div className="bg-accent relative">
-          <Summary clearCartItem={clearCartItem} cart={cart}></Summary>
+          <Summary clearCartItem={clearCartItem} cart={cart}>
+            <button
+              onClick={goToOrderReviewPage}
+              className="btn bg-secondary border-none font-bold w-full"
+            >
+              Review Order
+              <span className="inline-block ml-2">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </span>
+            </button>
+          </Summary>
         </div>
       </div>
     </section>
