@@ -47,7 +47,7 @@ const Orders = () => {
               onClick={goToOrderCheckoutPage}
               className="btn bg-secondary border-none font-bold w-full"
             >
-              Review Order
+              Proceed Checkout
               <span className="inline-block ml-2">
                 <FontAwesomeIcon icon={faCreditCard} />
               </span>
