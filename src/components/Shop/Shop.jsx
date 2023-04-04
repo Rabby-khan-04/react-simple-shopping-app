@@ -4,7 +4,7 @@ import { addToDB, getItemFromDB } from "../../../utilities/fakedb";
 import Product from "../Product/Product";
 import Summary from "../Summary/Summary";
 
-const Body = () => {
+const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
@@ -61,4 +61,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Shop;

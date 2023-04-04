@@ -1,27 +1,28 @@
 import React from "react";
 import logo from "../../assets/images/Logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="bg-primary py-5">
       <nav className="px-24 flex flex-row items-center justify-between">
         <div id="logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="" />
-          </a>
+          </Link>
         </div>
         <ul className="flex flex-row items-center gap-8 text-white text-xl font-medium">
           <li>
-            <a href="/order">Order</a>
+            <Link to="/">Shop</Link>
           </li>
           <li>
-            <a href="/order-review">Order Review</a>
+            <Link to="/orders">Orders</Link>
           </li>
           <li>
-            <a href="/manage-inventory">Manage Inventory</a>
+            <Link to="/inventory">Inventory</Link>
           </li>
           <li>
-            <a href="/login">Login</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </nav>
