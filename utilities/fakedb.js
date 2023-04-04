@@ -66,4 +66,12 @@ const getItemFromDB = () => {
   return cartItem;
 };
 
-export { addToDB, getItemFromDB };
+const removeFromDB = (id) => {
+  const storedItem = getItemFromDB();
+  if (id in storedItem) {
+    delete storedItem[id];
+    localStorage.setItem("shopping-cart", JSON.stringify(storedItem));
+  }
+};
+
+export { addToDB, getItemFromDB, removeFromDB };

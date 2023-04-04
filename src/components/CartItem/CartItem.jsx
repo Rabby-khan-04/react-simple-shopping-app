@@ -2,9 +2,8 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const CartItem = ({ product }) => {
-  console.log(product);
-  const { img, name, price, quantity } = product;
+const CartItem = ({ product, deleteCartItem }) => {
+  const { img, name, price, quantity, id } = product;
   return (
     <div className="flex justify-between items-center border border-border_color rounded-lg mb-5 p-2">
       <div className="flex gap-4">
@@ -21,7 +20,10 @@ const CartItem = ({ product }) => {
           </p>
         </div>
       </div>
-      <button className="bg-warning h-12 w-12 bg-opacity-30 border-none rounded-full text-warning">
+      <button
+        onClick={() => deleteCartItem(id)}
+        className="bg-warning h-12 w-12 bg-opacity-30 border-none rounded-full text-warning"
+      >
         <FontAwesomeIcon className="text-2xl" icon={faTrashCan} />
       </button>
     </div>
