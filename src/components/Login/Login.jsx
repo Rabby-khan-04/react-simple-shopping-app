@@ -40,7 +40,9 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-accent">Login</button>
+                <button type="submit" className="btn btn-accent">
+                  Login
+                </button>
               </div>
             </form>
             <p className="text-center mt-2 text-[14px]">
