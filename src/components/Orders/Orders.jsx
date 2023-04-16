@@ -26,6 +26,7 @@ const Orders = () => {
 
   const navigate = useNavigate();
   const goToOrderCheckoutPage = () => {
+    clearCartItem();
     navigate("/checkout");
   };
 
