@@ -17,3 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.form__container {
+  box-shadow: -12px 12px #ffe0b3;
+}
