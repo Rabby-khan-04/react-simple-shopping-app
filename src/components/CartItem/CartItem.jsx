@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const CartItem = ({ product, deleteCartItem }) => {
-  const { img, name, price, quantity, id } = product;
+  const { img, name, price, quantity, _id } = product;
   return (
     <div className="flex justify-between items-center border border-border_color rounded-lg mb-5 p-2">
       <div className="flex gap-4">
@@ -21,7 +21,7 @@ const CartItem = ({ product, deleteCartItem }) => {
         </div>
       </div>
       <button
-        onClick={() => deleteCartItem(id)}
+        onClick={() => deleteCartItem(_id)}
         className="bg-warning h-12 w-12 bg-opacity-30 border-none rounded-full text-warning"
       >
         <FontAwesomeIcon className="text-2xl" icon={faTrashCan} />
